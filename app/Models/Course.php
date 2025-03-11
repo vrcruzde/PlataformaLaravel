@@ -5,6 +5,9 @@ namespace App\Models;
 use App\Enums\CourseStatus;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Casts\Attribute;
+use Illuminate\Support\Facades\Storage;
+
 
 class Course extends Model
 {
@@ -17,8 +20,8 @@ class Course extends Model
         'summary',
         'description',
         'status',
-        'image-path',
-        'video-path',
+        'image_path',
+        'video_path',
         'Welcome_message',
         'Goodby_message',
         'observation',
@@ -33,8 +36,19 @@ class Course extends Model
 
     ];
 
-    //para saber quien realizo el curso y los que se matricularon
+    protected function image(): Attribute
+    {
+        return new Attribute (
+            get: function()
+            {
+                return $this->image_path ? Storage::url($this->image_path) : 'https://w7.pngwing.com/pngs/819/548/png-transparent-photo-image-landscape-icon-images-thumbnail.png';
+            }
+        );       
+    }
+   
 
+    //para saber quien realizo el curso y los que se matricularon
+    // Relaciones 
     public function teacher(){
         return $this->belongsTo(User::class);
     }
