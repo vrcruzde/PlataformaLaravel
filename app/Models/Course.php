@@ -29,11 +29,12 @@ class Course extends Model
         'level_id',
         'price_id',
         'category_id',
+        'published_at',
     ];
 
     protected $casts = [
-        'status' => CourseStatus::class
-
+        'status' => CourseStatus::class,
+        'published_at' => 'datetime',
     ];
 
     protected function image(): Attribute
@@ -41,7 +42,7 @@ class Course extends Model
         return new Attribute (
             get: function()
             {
-                return $this->image_path ? Storage::url($this->image_path) : 'https://w7.pngwing.com/pngs/819/548/png-transparent-photo-image-landscape-icon-images-thumbnail.png';
+                return $this->image_path ? Storage::url($this->image_path) : 'https://static-00.iconduck.com/assets.00/no-image-icon-512x512-lfoanl0w.png';
             }
         );       
     }

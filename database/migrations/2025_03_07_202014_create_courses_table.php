@@ -23,8 +23,8 @@ return new class extends Migration
 
             $table-> integer('status')->default(1); // estado del curso 1 activo, 0 inactivo
 
-            $table-> String ('image-path')->nullable(); // puede ir imagen o no
-            $table-> String ('video-path')->nullable(); 
+            $table-> String ('image_path')->nullable(); // puede ir imagen o no
+            $table-> String ('video_path')->nullable(); 
 
             $table-> text('Welcome_message')->nullable();
             $table-> text('Goodby_message')->nullable();
@@ -38,6 +38,7 @@ return new class extends Migration
             $table-> foreignId('price_id')->constrained();// es el id del precio del curso
             $table->foreignId('category_id')->constrained();// es el id de la categoria del curso
 
+            $table->timestamp('published_at')->nullable();// fecha de publicacion del curso
 
             $table->timestamps();
         });
