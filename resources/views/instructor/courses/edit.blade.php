@@ -5,31 +5,10 @@
         </h2>
     </x-slot>
     
-    <x-container class="py-8">        
-        <div class="grid grid-cols-1 lg:grid-cols-5 gap-6 ">
+    
+    <x-instructor.course-sidebar :course="$course">
 
-            <aside class="col-span-1">
-
-                <h1 class="font-semibold text-xl mb-4">
-                    Edición del curso
-                </h1>
-                <nav>
-                    <ul>
-                        <li class="border-l-4 border-indigo-400 pl-3">
-                            <a href="{{route('instructor.courses.edit', $course)}}">
-                                Información del curso
-                            </a>
-                        </li>
-                    </ul>
-                </nav>
-
-            </aside>
-
-            <div class="col-span-1 lg:col-span-4">
-                
-                <div class="card">
-
-                    <form action="{{route('instructor.courses.update', $course)}}"
+        <form action="{{route('instructor.courses.update', $course)}}"
                         method="POST" 
                         enctype="multipart/form-data"> 
                         
@@ -152,13 +131,9 @@
 
                         </div>
                     
-                    </form>
+        </form>
 
-                </div>
-
-            </div>
-        </div>
-    </x-container>
+    </x-instructor.course-sidebar>
 
     @push('js')
         <script src="https://cdn.ckeditor.com/ckeditor5/41.3.1/classic/ckeditor.js"></script>
