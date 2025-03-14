@@ -68,4 +68,9 @@ class Course extends Model
     public function category(){
         return $this->belongsTo(Category::class);
     }
+
+    //relacion uno a muchos
+    public function goals(){
+        return $this->hasMany(Goal::class);
+    }
 }
