@@ -73,4 +73,9 @@ class Course extends Model
     public function goals(){
         return $this->hasMany(Goal::class);
     }
+
+    //relacion uno a muchos
+    public function Requirements(){
+        return $this->hasMany(Requirement::class);
+    }
 }

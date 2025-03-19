@@ -10,6 +10,7 @@ use App\Models\Category;
 use App\Models\Level;
 use App\Models\Price;
 use Illuminate\Support\Facades\Storage;
+use App\Models\Requirement;
 
 
 
@@ -138,5 +139,9 @@ class CourseController extends Controller
 
     public function goals(Course $course){
         return view('instructor.courses.goals', compact('course'));
+    }
+
+    public function requirements(Course $course){
+        return view('instructor.courses.requirements', compact('course'));
     }
 }
