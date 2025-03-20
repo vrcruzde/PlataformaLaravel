@@ -2,6 +2,9 @@
 
 namespace App\Providers;
 
+use App\Models\Section;
+use App\Observers\SectionObserver;
+
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -20,5 +23,6 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         //
+        Section::observe(SectionObserver::class);
     }
 }
